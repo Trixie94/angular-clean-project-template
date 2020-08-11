@@ -25,11 +25,13 @@
     "update": "ng update @nrwl/workspace",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "prettier": "prettier --write **/*.{ts,scss}"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run lint && npm run test && npm run prettier",
+      "pre-push": "npm run lint && npm run test && npm run prettier && npm run build"
     }
   },
   "private": true,
