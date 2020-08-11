@@ -1,0 +1,43 @@
+{
+  "npmScope": "angular-clean-project-template",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "accessToken": "Y2QyNjNhNTgtZTU2NS00MjdhLWExMmUtZGEyYmY1MzVmNTEzfHJlYWQtd3JpdGU=",
+        "cacheableOperations": [
+          "build",
+          "test",
+          "lint",
+          "e2e"
+        ],
+        "canTrackAnalytics": false,
+        "showUsageWarnings": true
+      }
+    }
+  },
+  "projects": {
+    "angular-clean-project-template": {
+      "tags": []
+    },
+    "angular-clean-project-template-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "angular-clean-project-template"
+      ]
+    }
+  }
+}
