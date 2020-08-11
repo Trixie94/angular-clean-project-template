@@ -27,6 +27,11 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^10.0.0",
