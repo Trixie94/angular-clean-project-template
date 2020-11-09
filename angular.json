@@ -15,7 +15,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/angular-clean-project-template",
+            "outputPath": "dist/angular-clean-project-template/browser",
             "index": "apps/angular-clean-project-template/src/index.html",
             "main": "apps/angular-clean-project-template/src/main.ts",
             "polyfills": "apps/angular-clean-project-template/src/polyfills.ts",
@@ -23,9 +23,31 @@
             "aot": true,
             "assets": [
               "apps/angular-clean-project-template/src/favicon.ico",
-              "apps/angular-clean-project-template/src/assets"
+              "apps/angular-clean-project-template/src/assets",
+              {
+                "glob": "robots.txt",
+                "input": "./resources/assets",
+                "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./resources/assets",
+                "output": "/assets/"
+              },
+              {
+                "glob": "config.json",
+                "input": "apps/angular-clean-project-template/src/config/",
+                "output": "/"
+              }
             ],
-            "styles": ["apps/angular-clean-project-template/src/styles.scss"],
+            "styles": [
+              "./node_modules/normalize.css/normalize.css",
+              "resources/styles/styles.scss",
+              "apps/angular-clean-project-template/src/styles.scss",
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              }
+            ],
             "scripts": []
           },
           "configurations": {
@@ -34,6 +56,10 @@
                 {
                   "replace": "apps/angular-clean-project-template/src/environments/environment.ts",
                   "with": "apps/angular-clean-project-template/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "apps/angular-clean-project-template/src/config/config.json",
+                  "with": "apps/angular-clean-project-template/src/config/config.prod.json"
                 }
               ],
               "optimization": true,
@@ -83,10 +109,7 @@
               "apps/angular-clean-project-template/tsconfig.app.json",
               "apps/angular-clean-project-template/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/angular-clean-project-template/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/angular-clean-project-template/**/*"]
           }
         },
         "test": {
@@ -96,6 +119,55 @@
             "tsConfig": "apps/angular-clean-project-template/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "apps/angular-clean-project-template/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/angular-clean-project-template/server",
+            "main": "apps/angular-clean-project-template/server.ts",
+            "tsConfig": "apps/angular-clean-project-template/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "apps/angular-clean-project-template/src/environments/environment.ts",
+                  "with": "apps/angular-clean-project-template/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "apps/angular-clean-project-template/src/config/config.json",
+                  "with": "apps/angular-clean-project-template/src/config/config.prod.json"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "angular-clean-project-template:build",
+            "serverTarget": "angular-clean-project-template:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-clean-project-template:build:production",
+              "serverTarget": "angular-clean-project-template:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "angular-clean-project-template:build:production",
+            "serverTarget": "angular-clean-project-template:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -121,13 +193,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/angular-clean-project-template-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/angular-clean-project-template-e2e/**/*"
-            ]
+            "tsConfig": ["apps/angular-clean-project-template-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/angular-clean-project-template-e2e/**/*"]
           }
         }
       }
@@ -137,46 +204,19 @@
     "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
-    "@nrwl/workspace": {
-      "library": {
-        "linter": "tslint"
-      }
-    },
-    "@nrwl/cypress": {
-      "cypress-project": {
-        "linter": "tslint"
-      }
-    },
-    "@nrwl/node": {
-      "application": {
-        "linter": "tslint"
-      },
-      "library": {
-        "linter": "tslint"
-      }
-    },
-    "@nrwl/nest": {
-      "application": {
-        "linter": "tslint"
-      },
-      "library": {
-        "linter": "tslint"
-      }
-    },
-    "@nrwl/express": {
-      "application": {
-        "linter": "tslint"
-      },
-      "library": {
-        "linter": "tslint"
-      }
-    },
     "@nrwl/angular:application": {
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
+    },
+    "@nrwl/schematics:library": {
+      "style": "scss"
+    },
+    "@nrwl/schematics:application": {
+      "style": "scss",
+      "framework": "angular"
     }
   },
   "defaultProject": "angular-clean-project-template"

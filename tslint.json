@@ -1,84 +1,71 @@
 {
-  "rulesDirectory": [
-    "node_modules/@nrwl/workspace/src/tslint",
-    "node_modules/codelyzer"
-  ],
-  "linterOptions": {
-    "exclude": ["**/*"]
-  },
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "rulesDirectory": ["codelyzer"],
   "rules": {
-    "arrow-return-shorthand": true,
-    "callable-types": true,
-    "class-name": true,
+    "array-type": false,
+    "arrow-parens": false,
     "deprecation": {
       "severity": "warn"
     },
-    "forin": true,
     "import-blacklist": [true, "rxjs/Rx"],
-    "interface-over-type-literal": true,
+    "max-line-length": [true, 120],
+    "no-unused-variable": false,
     "member-access": false,
     "member-ordering": [
       true,
       {
         "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
+          "public-static-field",
+          "protected-static-field",
+          "private-static-field",
+          "public-instance-field",
+          "protected-instance-field",
+          "private-instance-field",
+          "public-static-method",
+          "protected-static-method",
+          "private-static-method",
+          "constructor",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
         ]
       }
     ],
-    "no-arg": true,
-    "no-bitwise": true,
-    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
-    "no-construct": true,
-    "no-debugger": true,
-    "no-duplicate-super": true,
+    "interface-name": false,
+    "max-classes-per-file": false,
+    "no-consecutive-blank-lines": false,
+    "no-console": true,
+    "no-duplicate-variable": [true, "check-parameters"],
     "no-empty": false,
-    "no-empty-interface": true,
-    "no-eval": true,
     "no-inferrable-types": [true, "ignore-params"],
-    "no-misused-new": true,
     "no-non-null-assertion": true,
-    "no-shadowed-variable": true,
-    "no-string-literal": false,
-    "no-string-throw": true,
+    "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-unnecessary-initializer": true,
-    "no-unused-expression": true,
-    "no-var-keyword": true,
     "object-literal-sort-keys": false,
-    "prefer-const": true,
-    "radix": true,
-    "triple-equals": [true, "allow-null-check"],
-    "unified-signatures": true,
+    "quotemark": [true, "single"],
+    "typedef": [true, "parameter", "property-declaration"],
     "variable-name": false,
-    "nx-enforce-module-boundaries": [
-      true,
-      {
-        "enforceBuildableLibDependency": true,
-        "allow": [],
-        "depConstraints": [
-          {
-            "sourceTag": "*",
-            "onlyDependOnLibsWithTags": ["*"]
-          }
-        ]
-      }
-    ],
-    "directive-selector": [true, "attribute", "app", "camelCase"],
-    "component-selector": [true, "element", "app", "kebab-case"],
+    "no-var-requires": false,
+    "object-literal-key-quotes": false,
+    "ordered-imports": false,
+    "trailing-comma": false,
     "no-conflicting-lifecycle": true,
-    "no-host-metadata-property": true,
-    "no-input-rename": true,
-    "no-inputs-metadata-property": true,
     "no-output-native": true,
-    "no-output-on-prefix": true,
-    "no-output-rename": true,
-    "no-outputs-metadata-property": true,
+    "directive-selector": [true, "attribute", "app", "camelCase"],
+    "component-selector": [true, "element", "page", "app", "kebab-case"],
     "template-banana-in-box": true,
     "template-no-negated-async": true,
+    "no-output-on-prefix": true,
+    "no-inputs-metadata-property": true,
+    "no-outputs-metadata-property": true,
+    "no-host-metadata-property": true,
+    "no-input-rename": true,
+    "no-output-rename": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "component-class-suffix": true,
+    "contextual-lifecycle": true,
+    "directive-class-suffix": true
   }
 }

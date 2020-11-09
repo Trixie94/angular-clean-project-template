@@ -1,98 +1,59 @@
-# AngularCleanProjectTemplate
+# Angular Boilerplate
 
-This project was generated using [Nx](https://nx.dev).
+- [Angular Boilerplate](#angular-clean-project-template)
+  - [Installation](#installation)
+  - [Scripts](#scripts)
+    - [Development server](#development-server)
+    - [Development build](#development-build)
+    - [Production build (SSR)](#production-build)
+    - [Linting](#linting)
+    - [Unit tests](#unit-tests)
+    - [Documentation](#documentation)
+  - [Authors](#authors)
+  - [License](#license)
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+## Installation
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+Upewnij się że masz zainstalowanego [Node](https://nodejs.org/en/ 'Node') oraz [Angular CLI](https://github.com/angular/angular-cli#installation 'Angular CLI')
 
-## Quick Start & Documentation
+Po pobraniu repozytorium uruchom komendę `npm install` w katalogu z aplikacją w celu zainstalowania zależności
 
-[Nx Documentation](https://nx.dev/angular)
+## Skrypty
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+### Serwer developerski
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
+`npm start`
 
-## Adding capabilities to your workspace
+Aplikacja zostanie uruchomiona pod adresem: http://localhost:4200
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+### Zbudowanie aplikacji w wersji deweloperskiej
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+`npm run build`
 
-Below are our core plugins:
+Kod docelowy po zbudowaniu zostanie umieszczony w katalogu `dist/apps/angular-clean-project-template/`
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+### Zbudowanie aplikacji w wersji produkcyjnej
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
+`npm run build:prod`
 
-## Generate an application
+Kod docelowy po zbudowaniu zostanie umieszczony w katalogu `dist/apps/angular-clean-project-template/`
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+### Linting
 
-> You can use any of the plugins above to generate applications as well.
+`npm run lint`
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+### Testy jednostkowe
 
-## Generate a library
+`npm run test`
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+### Generowanie dokumentacji
 
-> You can also use any of the plugins above to generate libraries as well.
+`npm run compodoc`
 
-Libraries are sharable across libraries and applications. They can be imported from `@angular-clean-project-template/mylib`.
+Dokumentacja zostanie wygenerowana w katalogu `documentation`
 
-## Development server
+## Aktualni autorzy
 
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+- **Maciej Syguła** - _frontend_
 
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+## Licencja

@@ -9,23 +9,15 @@
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tsconfig.base.json": "*",
+    "tsconfig.json": "*",
     "tslint.json": "*",
     "nx.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/nx-cloud",
+      "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "accessToken": "Y2QyNjNhNTgtZTU2NS00MjdhLWExMmUtZGEyYmY1MzVmNTEzfHJlYWQtd3JpdGU=",
-        "cacheableOperations": [
-          "build",
-          "test",
-          "lint",
-          "e2e"
-        ],
-        "canTrackAnalytics": false,
-        "showUsageWarnings": true
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
@@ -35,9 +27,7 @@
     },
     "angular-clean-project-template-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "angular-clean-project-template"
-      ]
+      "implicitDependencies": ["angular-clean-project-template"]
     }
   }
 }

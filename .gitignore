@@ -4,9 +4,11 @@
 /dist
 /tmp
 /out-tsc
+/documentation
 
 # dependencies
 /node_modules
+package-lock.json
 
 # IDEs and editors
 /.idea
@@ -37,6 +39,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# customs
-package-lock.json
